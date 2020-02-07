@@ -1,15 +1,28 @@
 function indexEqualsValueSearch(arr) {
+  //BRUTE FORCE O(n)
+  //   for (let i = 0; i < arr.length; i++) {
+  //     if (arr[i] == i) {
+  //       return i;
+  //     }
+  //   }
+  //   return -1;
+  // }
   let upperBound = arr.length - 1;
   let lowerBound = 0;
   let middleIdx = Math.floor((upperBound - lowerBound) / 2) + lowerBound;
-  while (arr[middleIdx] !== undefined && arr[middleIdx] !== middleIdx && lowerBound < upperBound) {
+  while (
+    arr[middleIdx] !== undefined &&
+    arr[middleIdx] !== middleIdx &&
+    lowerBound < upperBound
+  ) {
     if (arr[middleIdx] > middleIdx) {
       upperBound = middleIdx - 1;
-    }
-    else {
+    } else {
       lowerBound = middleIdx + 1;
     }
     middleIdx = Math.floor((upperBound - lowerBound) / 2) + lowerBound;
   }
   return arr[middleIdx] === middleIdx ? middleIdx : -1;
 }
+
+console.log(indexEqualsValueSearch([-10, -9, -8, -7, -6, -5, 6]));
